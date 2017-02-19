@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemAcquistionGUI", "ItemAcquistionGUI\ItemAcquistionGUI.csproj", "{A5CC5CC0-E8CD-485E-86ED-7576505BDC82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemAcquistionAPI", "ItemAcquistionAPI\ItemAcquistionAPI.csproj", "{5EE678B8-E187-49E0-874C-762C21F4FC46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemAcquistionCMD", "ItemAcquistionCMD\ItemAcquistionCMD.csproj", "{7F741A0B-5698-4497-B985-1E79E40881CE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5CC5CC0-E8CD-485E-86ED-7576505BDC82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5CC5CC0-E8CD-485E-86ED-7576505BDC82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5CC5CC0-E8CD-485E-86ED-7576505BDC82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5CC5CC0-E8CD-485E-86ED-7576505BDC82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EE678B8-E187-49E0-874C-762C21F4FC46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EE678B8-E187-49E0-874C-762C21F4FC46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EE678B8-E187-49E0-874C-762C21F4FC46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EE678B8-E187-49E0-874C-762C21F4FC46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F741A0B-5698-4497-B985-1E79E40881CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F741A0B-5698-4497-B985-1E79E40881CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F741A0B-5698-4497-B985-1E79E40881CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F741A0B-5698-4497-B985-1E79E40881CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
