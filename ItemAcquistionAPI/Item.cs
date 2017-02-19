@@ -12,6 +12,10 @@ namespace ItemAcquistionAPI {
 		public List<Item> requiredItems = new List<Item>();
 		public String comment = "";
 
+		/// <summary>
+		/// Finds and combines the number of items required for this one
+		/// </summary>
+		/// <returns>returns a list of items that are required for this item</returns>
 		public List<Item> getAllItems() {
 			List<Item> allItems = this.getItems();
 			sortByName(allItems);
@@ -41,7 +45,7 @@ namespace ItemAcquistionAPI {
 		}
 
 		public String toString() {
-			return name;
+			return name + " required: " + numberRequired + " have: " + numberHave;
 		}
 		private void sortByName(List<Item> listToSort) {
 			listToSort.Sort(delegate (Item x, Item y) {

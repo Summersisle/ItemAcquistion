@@ -37,7 +37,10 @@ namespace ItemAcquistionCMD {
 			ia3.requiredItems.Add(ia31);
 			ia1.requiredItems.Add(ia11);
 
-			Console.WriteLine(ia.getAllItems().ToString());
+			for(int i = 0; i < ia.getAllItems().Count; i++) {
+				Console.WriteLine(ia.getAllItems()[i].toString());
+			}
+
 			Console.Read();
 		}
 	}
