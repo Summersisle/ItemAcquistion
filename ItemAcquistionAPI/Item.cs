@@ -5,12 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ItemAcquistionAPI {
-	public class Item {
+	public class Item: IEquatable<Item> {
 		public String name = "";
 		public int numberRequired;
 		public int numberHave= 0;
 		public List<Item> requiredItems = new List<Item>();
 		public String comment = "";
+
+		public Item(String n, String c ="") {
+			name = n;
+			comment = c;
+		}
 
 		/// <summary>
 		/// Finds and combines the number of items required for this one
@@ -63,6 +68,19 @@ namespace ItemAcquistionAPI {
 				int b = y.numberRequired - y.numberHave;
 				return b.CompareTo(a);
 			});
+		} 
+
+		public bool Equals(Item otherItem) {
+			return false;
+		}
+		public override bool Equals(object obj) {
+			if (obj == null) return false;
+			Item objAsItem = obj as Item;
+			if (objAsItem == null) return false;
+			else return Equals(objAsItem);
+		}
+		public override int GetHashCode() {
+			return name.GetHashCode();
 		}
 	}
 }

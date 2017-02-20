@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 namespace ItemAcquistionCMD {
 	class Program {
 		static void Main(string[] args) {
+
+			/*
 			ItemAcquistionAPI.Item ia = new ItemAcquistionAPI.Item();
 			ia.name = "a";
 			ia.numberRequired = 1;
@@ -40,8 +42,8 @@ namespace ItemAcquistionCMD {
 			for(int i = 0; i < ia.getAllItems().Count; i++) {
 				Console.WriteLine(ia.getAllItems()[i].toString());
 			}
-
-			Console.Read();
+			*/
+			Console.Readkey();
 		}
 	}
 }
