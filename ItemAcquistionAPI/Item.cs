@@ -71,6 +71,8 @@ namespace ItemAcquistionAPI {
 		} 
 
 		public bool Equals(Item otherItem) {
+			if(name.Equals(otherItem.name) && comment.Equals(otherItem.comment))
+				return true;
 			return false;
 		}
 		public override bool Equals(object obj) {

@@ -15,40 +15,52 @@ namespace ItemAcquistionAPI {
 		/// <param name="name">The name of the item to add</param>
 		/// <param name="comment">The comment for the item</param>
 		/// <returns></returns>
-		public static ReturnCode createItem(String name, string comment = "") {
-			//check if name already exists
-			Item newItem = new Item(name, comment);
-			if (allItems.ContainsKey(newItem))
+		public static ReturnCode createItem(String itemToAddName, string comment = "") {
+			Item itemToAdd = null;
+			for (int x = 0; x < allItems.Count; x++) {
+				if (allItems.ElementAt(x).Key.name == itemToAddName) {
+					itemToAdd = allItems.ElementAt(x).Key;
+					break;
+				}
+			}
+			if (itemToAdd != null)
 				return ReturnCode.ERROR_ITEM_ALREADY_EXISTS;
-			allItems.Add(newItem,null);
-			if (allItems.ContainsKey(newItem))
+			itemToAdd = new Item(itemToAddName, comment);
+			allItems.Add(itemToAdd, null);
+			if (allItems.ContainsKey(itemToAdd))
 				return ReturnCode.SUCCESS;
 			return ReturnCode.ERROR;
 		}
 
-		public static ReturnCode addRecipe(Item itemToAddRecipeTo, bool overrideExisting =false, params RecipeIngredient[] ri) {
-			if (!allItems.ContainsKey(itemToAddRecipeTo))
+		public static ReturnCode addRecipe(String itemToAddRecipeToName,  params KeyValuePair<String, int>[] recipeIng) {
+			Item itemToAddRecipeTo = findItem(itemToAddRecipeToName);
+			if (itemToAddRecipeTo == null)
 				return ReturnCode.ERROR_NO_ITEM_FOUND;
-			if (allItems[itemToAddRecipeTo] != null && overrideExisting == false)
+			if (allItems[itemToAddRecipeTo] != null)
 				return ReturnCode.ERROR_ITEM_ALREADY_HAS_RECIPE;
 			ItemRecipe ir = new ItemRecipe(itemToAddRecipeTo);
-			for(int i = 0; i < ri.Length; i++) {
-				Item foundItem = null;
-				for(int x = 0; x < allItems.Count; x++) {
-					if(allItems.ElementAt(x).Key.name == ri[i].name) {
-						foundItem = allItems.ElementAt(x).Key;
-						break;
-					}
-				}
-				if (foundItem == null)
-					return ReturnCode.ERROR_NO_ITEM_FOUND;
 
-				ir.addItem(foundItem, ri[i].quantity);
+			foreach (var recipeName in recipeIng) {
+				Item tmpItem = findItem(recipeName.Key);
+				if (tmpItem == null)
+					return ReturnCode.ERROR_NO_ITEM_FOUND;
+				ir.addItem(tmpItem, recipeName.Value);
 			}
 			allItems[itemToAddRecipeTo] = ir;
 			if (allItems[itemToAddRecipeTo] != null)
 				return ReturnCode.SUCCESS;
 			return ReturnCode.ERROR;
+		}
+
+		private static Item findItem(String nameOfItemToFind) {
+			Item foundItem = null;
+			for (int x = 0; x < allItems.Count; x++) {
+				if (allItems.ElementAt(x).Key.name == nameOfItemToFind) {
+					foundItem = allItems.ElementAt(x).Key;
+					break;
+				}
+			}
+			return foundItem;
 		}
 	}
 }

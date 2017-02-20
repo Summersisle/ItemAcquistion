@@ -43,7 +43,18 @@ namespace ItemAcquistionCMD {
 				Console.WriteLine(ia.getAllItems()[i].toString());
 			}
 			*/
-			Console.Readkey();
+
+			ItemAcquistionAPI.ItemAcquistionAPI.createItem("PS4 Controller");
+			ItemAcquistionAPI.ItemAcquistionAPI.createItem("PS4 Device");
+			ItemAcquistionAPI.ItemAcquistionAPI.createItem("PS4 Game");
+			ItemAcquistionAPI.ItemAcquistionAPI.createItem("PS4 Bundle");
+			ItemAcquistionAPI.ItemAcquistionAPI.addRecipe("PS4 Bundle", new KeyValuePair < string, int >[] {
+				new KeyValuePair<string, int>("PS4 Controller", 2),
+				new KeyValuePair<string, int>("PS4 Device", 1),
+				new KeyValuePair<string, int>("PS4 Game", 1)
+			});
+
+			Console.ReadKey();
 		}
 	}
 }
