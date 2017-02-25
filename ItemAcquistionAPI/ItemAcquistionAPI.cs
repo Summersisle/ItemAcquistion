@@ -32,14 +32,14 @@ namespace ItemAcquistionAPI {
 			return ReturnCode.ERROR;
 		}
 
-		public static ReturnCode addRecipe(String itemToAddRecipeToName,  params KeyValuePair<String, int>[] recipeIng) {
+		public static ReturnCode addRecipe(String itemToAddRecipeToName, int nOfItemsCreated, params KeyValuePair<String, int>[] recipeIng) {
 			Item itemToAddRecipeTo = findItem(itemToAddRecipeToName);
 			if (itemToAddRecipeTo == null)
 				return ReturnCode.ERROR_NO_ITEM_FOUND;
 			if (allItems[itemToAddRecipeTo] != null)
 				return ReturnCode.ERROR_ITEM_ALREADY_HAS_RECIPE;
-			ItemRecipe ir = new ItemRecipe(itemToAddRecipeTo);
 
+			ItemRecipe ir = new ItemRecipe(itemToAddRecipeTo);
 			foreach (var recipeName in recipeIng) {
 				Item tmpItem = findItem(recipeName.Key);
 				if (tmpItem == null)
@@ -47,6 +47,7 @@ namespace ItemAcquistionAPI {
 				ir.addItem(tmpItem, recipeName.Value);
 			}
 			allItems[itemToAddRecipeTo] = ir;
+			allItems[itemToAddRecipeTo].numberOfItemsCreated = nOfItemsCreated;
 			if (allItems[itemToAddRecipeTo] != null)
 				return ReturnCode.SUCCESS;
 			return ReturnCode.ERROR;

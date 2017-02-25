@@ -8,50 +8,25 @@ namespace ItemAcquistionCMD {
 	class Program {
 		static void Main(string[] args) {
 
-			/*
-			ItemAcquistionAPI.Item ia = new ItemAcquistionAPI.Item();
-			ia.name = "a";
-			ia.numberRequired = 1;
 
-			ItemAcquistionAPI.Item ia1 = new ItemAcquistionAPI.Item();
-			ia1.name = "a1";
-			ia1.numberRequired = 1;
-
-			ItemAcquistionAPI.Item ia2 = new ItemAcquistionAPI.Item();
-			ia2.name = "a2";
-			ia2.numberRequired = 1;
-
-			ItemAcquistionAPI.Item ia3 = new ItemAcquistionAPI.Item();
-			ia3.name = "a3";
-			ia3.numberRequired = 1;
-
-			ItemAcquistionAPI.Item ia31 = new ItemAcquistionAPI.Item();
-			ia31.name = "a3-1";
-			ia31.numberRequired = 1;
-
-			ItemAcquistionAPI.Item ia11 = new ItemAcquistionAPI.Item();
-			ia11.name = "a3-1";
-			ia11.numberRequired = 1;
-
-			ia.requiredItems.Add(ia1);
-			ia.requiredItems.Add(ia2);
-			ia.requiredItems.Add(ia3);
-			ia3.requiredItems.Add(ia31);
-			ia1.requiredItems.Add(ia11);
-
-			for(int i = 0; i < ia.getAllItems().Count; i++) {
-				Console.WriteLine(ia.getAllItems()[i].toString());
-			}
-			*/
-
-			ItemAcquistionAPI.ItemAcquistionAPI.createItem("PS4 Controller");
-			ItemAcquistionAPI.ItemAcquistionAPI.createItem("PS4 Device");
-			ItemAcquistionAPI.ItemAcquistionAPI.createItem("PS4 Game");
-			ItemAcquistionAPI.ItemAcquistionAPI.createItem("PS4 Bundle");
-			ItemAcquistionAPI.ItemAcquistionAPI.addRecipe("PS4 Bundle", new KeyValuePair < string, int >[] {
-				new KeyValuePair<string, int>("PS4 Controller", 2),
-				new KeyValuePair<string, int>("PS4 Device", 1),
-				new KeyValuePair<string, int>("PS4 Game", 1)
+			ItemAcquistionAPI.ItemAcquistionAPI.createItem("Iron Ignot", "Created in a Furance");
+			ItemAcquistionAPI.ItemAcquistionAPI.createItem("Iron Ore","Mined with a Stone Pickaxe");
+			ItemAcquistionAPI.ItemAcquistionAPI.createItem("Stick");
+			ItemAcquistionAPI.ItemAcquistionAPI.createItem("Wood Planks");
+			ItemAcquistionAPI.ItemAcquistionAPI.createItem("Wood");
+			ItemAcquistionAPI.ItemAcquistionAPI.createItem("Iron Sword");
+			ItemAcquistionAPI.ItemAcquistionAPI.addRecipe("Iron Sword",1, new KeyValuePair < string, int >[] {
+				new KeyValuePair<string, int>("Iron Ignot", 2),
+				new KeyValuePair<string, int>("Stick", 1)
+			});
+			ItemAcquistionAPI.ItemAcquistionAPI.addRecipe("Iron Ignot",1, new KeyValuePair<string, int>[] {
+				new KeyValuePair<string, int>("Iron Ore", 2)
+			});
+			ItemAcquistionAPI.ItemAcquistionAPI.addRecipe("Stick",4, new KeyValuePair<string, int>[] {
+				new KeyValuePair<string, int>("Wood Planks", 2)
+			});
+			ItemAcquistionAPI.ItemAcquistionAPI.addRecipe("Wood Planks",4, new KeyValuePair<string, int>[] {
+				new KeyValuePair<string, int>("Wood", 1)
 			});
 
 			Console.ReadKey();
