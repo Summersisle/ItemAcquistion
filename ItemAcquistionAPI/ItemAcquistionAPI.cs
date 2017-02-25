@@ -53,6 +53,10 @@ namespace ItemAcquistionAPI {
 			return ReturnCode.ERROR;
 		}
 
+		public static void getAllItems() {
+
+		}
+
 		private static Item findItem(String nameOfItemToFind) {
 			Item foundItem = null;
 			for (int x = 0; x < allItems.Count; x++) {
