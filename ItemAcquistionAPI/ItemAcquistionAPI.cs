@@ -83,12 +83,20 @@ namespace ItemAcquistionAPI {
 				List<KeyValuePair<Item, int>> returnValue = getRequiredItems(itemRecipes[i].Key);
 				if (returnValue != null) {
 					foreach (var returnItem in returnValue) {
+						/*int numRequiredToMake = itemRecipes[i].Value;
+						int numMade = 1;
+						if (allItems[returnItem.Key] != null)
+							numMade = allItems[returnItem.Key].numberOfItemsCreated;
+						int numRequiredForPrev = returnItem.Value;
+
+
+						KeyValuePair<Item, int> tmp = new KeyValuePair<Item, int>(returnItem.Key, (int)Math.Ceiling(Decimal.Divide(new Decimal(numRequiredToMake), new Decimal(numMade)))*numMade);	//How many are truely required
+						itemRecipes.Add(tmp);
+						*/
 						itemRecipes.Add(returnItem);
 					}
 				}
-				//itemRecipes.AddRange(getRequiredItems(recipe.Key));
 			}
-
 			return itemRecipes;
 		}
 		public static string viewItemComment(string selection) {

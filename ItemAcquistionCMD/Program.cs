@@ -53,7 +53,7 @@ namespace ItemAcquistionCMD {
 			ItemAcquistionAPI.ItemAcquistionAPI.createItem("Iron Sword");
 			ItemAcquistionAPI.ItemAcquistionAPI.addRecipe("Iron Sword", 1, new KeyValuePair<string, int>[] {
 				new KeyValuePair<string, int>("Iron Ignot", 2),
-				new KeyValuePair<string, int>("Stick", 1)
+				new KeyValuePair<string, int>("Stick", 10)
 			});
 			ItemAcquistionAPI.ItemAcquistionAPI.addRecipe("Iron Ignot", 1, new KeyValuePair<string, int>[] {
 				new KeyValuePair<string, int>("Iron Ore", 2)
