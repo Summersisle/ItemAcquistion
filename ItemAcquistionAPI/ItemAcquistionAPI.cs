@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ItemAcquistionAPI {
 	public static class ItemAcquistionAPI {
-
+		private static System.Globalization.TextInfo ti = System.Globalization.CultureInfo.CurrentCulture.TextInfo;
 		private static Dictionary<Item,ItemRecipe> allItems = new Dictionary<Item, ItemRecipe>();
 
 		/// <summary>
@@ -15,8 +15,9 @@ namespace ItemAcquistionAPI {
 		/// <param name="name">The name of the item to add</param>
 		/// <param name="comment">The comment for the item</param>
 		/// <returns></returns>
-		public static ReturnCode createItem(String itemToAddName, string comment = "") {
+		public static ReturnCode createItem(String iName, string comment = "") {
 			Item itemToAdd = null;
+			String itemToAddName = returnProperName(iName);
 			for (int x = 0; x < allItems.Count; x++) {
 				if (allItems.ElementAt(x).Key.name == itemToAddName) {
 					itemToAdd = allItems.ElementAt(x).Key;
@@ -32,7 +33,8 @@ namespace ItemAcquistionAPI {
 			return ReturnCode.ERROR;
 		}
 
-		public static ReturnCode addRecipe(String itemToAddRecipeToName, int nOfItemsCreated, params KeyValuePair<String, int>[] recipeIng) {
+		public static ReturnCode addRecipe(String iName, int nOfItemsCreated, params KeyValuePair<String, int>[] recipeIng) {
+			String itemToAddRecipeToName = returnProperName(iName);
 			Item itemToAddRecipeTo = findItem(itemToAddRecipeToName);
 			if (itemToAddRecipeTo == null)
 				return ReturnCode.ERROR_NO_ITEM_FOUND;
@@ -66,6 +68,9 @@ namespace ItemAcquistionAPI {
 				}
 			}
 			return foundItem;
+		}
+		private static string returnProperName(string name) {
+			return ti.ToTitleCase(name);
 		}
 	}
 }

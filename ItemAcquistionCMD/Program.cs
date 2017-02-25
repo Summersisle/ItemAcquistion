@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,8 +9,7 @@ namespace ItemAcquistionCMD {
 	class Program {
 		static void Main(string[] args) {
 
-
-			for(;;){
+			for (;;){
 				Console.WriteLine("What would you like to do?");
 				string selection = Console.ReadLine().ToLower();
 				if (selection == "exit")
@@ -26,7 +26,14 @@ namespace ItemAcquistionCMD {
 					load();
 				if (selection == "save")
 					save();
+				if (selection == "view")
+					view();
 			}
+		}
+
+		private static void view() {
+			Console.WriteLine("What item would you like to view?");
+			string selection = Console.ReadLine().ToLower();
 		}
 
 		private static void save() {
