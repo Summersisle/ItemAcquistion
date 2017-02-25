@@ -71,7 +71,7 @@ namespace ItemAcquistionCMD {
 		}
 
 		private static void query() {
-			throw new NotImplementedException();
+			Console.Write(ItemAcquistionAPI.ItemAcquistionAPI.viewAllRequiredItems("Iron Sword"));
 		}
 
 		private static void add() {

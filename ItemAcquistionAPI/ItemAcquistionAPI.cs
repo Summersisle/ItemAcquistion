@@ -43,7 +43,60 @@ namespace ItemAcquistionAPI {
 			int counter = 1;
 			foreach (var recipe in allItems[itemToView].requiredItems) {
 				output += "Item" + counter + ": " + recipe.Key.name +" Number Required: " + recipe.Value + Environment.NewLine;
+				counter++;
 			}
+			return output;
+		}
+		public static string viewAllRequiredItems(string selection) {
+			String itemToViewName = returnProperName(selection);
+			Item itemToView = findItem(itemToViewName);
+			String output = "";
+			output += "Item Name: " + itemToView.name + Environment.NewLine;
+			output += "Comment: " + itemToView.comment + Environment.NewLine;
+			output += "-----All required items to make this item-----" + Environment.NewLine;
+			List<KeyValuePair<Item, int>> requiredItems = getRequiredItems(itemToView);
+			Dictionary<Item, int> rItems = new Dictionary<Item, int>();
+			foreach (var requiredItem in requiredItems) {
+				if (rItems.ContainsKey(requiredItem.Key)) {
+					rItems[requiredItem.Key] += requiredItem.Value;
+				} else {
+					rItems.Add(requiredItem.Key, requiredItem.Value);
+				}
+			}
+			int counter = 1;
+			foreach (var requiredItem in requiredItems) {
+				output += "Item" + counter + ": " + requiredItem.Key.name + " Number Required: " + requiredItem.Value + Environment.NewLine;
+				counter++;
+			}
+			return output;
+		}
+		private static List<KeyValuePair<Item, int>> getRequiredItems(Item curItem) {
+			if(allItems[curItem] == null) {   //No Recipe
+				return null;
+			}
+			List<KeyValuePair<Item, int>> itemRecipes = new List<KeyValuePair<Item, int>>();
+			foreach(var recipe in allItems[curItem].requiredItems) {
+				itemRecipes.Add(recipe);
+			}
+			int initalSize = itemRecipes.Count;
+			for (int i = 0; i < initalSize; i++) {
+				List<KeyValuePair<Item, int>> returnValue = getRequiredItems(itemRecipes[i].Key);
+				if (returnValue != null) {
+					foreach (var returnItem in returnValue) {
+						itemRecipes.Add(returnItem);
+					}
+				}
+				//itemRecipes.AddRange(getRequiredItems(recipe.Key));
+			}
+
+			return itemRecipes;
+		}
+		public static string viewItemComment(string selection) {
+			String itemToViewName = returnProperName(selection);
+			Item itemToView = findItem(itemToViewName);
+			String output = "";
+			output += "Item Name: " + itemToView.name + Environment.NewLine;
+			output += "Comment: " + itemToView.comment + Environment.NewLine;
 			return output;
 		}
 
