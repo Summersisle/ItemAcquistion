@@ -33,6 +33,20 @@ namespace ItemAcquistionAPI {
 			return ReturnCode.ERROR;
 		}
 
+		public static string viewRequiredItems(string selection) {
+			String itemToViewName = returnProperName(selection);
+			Item itemToView = findItem(itemToViewName);
+			String output = "";
+			output += "Item Name: " + itemToView.name + Environment.NewLine;
+			output += "Comment: " + itemToView.comment + Environment.NewLine;
+			output += "Recipe requires these items" + Environment.NewLine;
+			int counter = 1;
+			foreach (var recipe in allItems[itemToView].requiredItems) {
+				output += "Item" + counter + ": " + recipe.Key.name +" Number Required: " + recipe.Value + Environment.NewLine;
+			}
+			return output;
+		}
+
 		public static ReturnCode addRecipe(String iName, int nOfItemsCreated, params KeyValuePair<String, int>[] recipeIng) {
 			String itemToAddRecipeToName = returnProperName(iName);
 			Item itemToAddRecipeTo = findItem(itemToAddRecipeToName);

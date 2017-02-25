@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +33,7 @@ namespace ItemAcquistionCMD {
 		private static void view() {
 			Console.WriteLine("What item would you like to view?");
 			string selection = Console.ReadLine().ToLower();
+			Console.Write(ItemAcquistionAPI.ItemAcquistionAPI.viewRequiredItems(selection));
 		}
 
 		private static void save() {
